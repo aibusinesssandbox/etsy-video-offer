@@ -11,12 +11,6 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
-        @keyframes scanline {
-            0% { top: 0%; opacity: 0; }
-            50% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
-        .animate-scan { animation: scanline 3.5s infinite linear; }
     </style>
 </head>
 <body class="bg-[#F9F6F0] text-[#2C302E] antialiased min-h-screen flex flex-col justify-between">
@@ -75,7 +69,7 @@
                     FLOW.GOOGLE RENDER
                 </div>
                 <video id="showcase-video" autoplay loop muted playsinline class="w-full h-full object-cover rounded-[24px]">
-                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                    <source id="video-source" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                     Your browser does not support video playback.
                 </video>
                 <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-3.5 rounded-2xl shadow-lg border border-white/20 z-20">
@@ -154,18 +148,16 @@
         function updatePlayer() {
             const data = profiles[currentCat];
             const videoEl = document.getElementById('showcase-video');
+            const sourceEl = document.getElementById('video-source');
             document.getElementById('card-title').innerText = data.title;
             
-            if (currentSpec === '10s') {
-                document.getElementById('card-badge').innerText = "10s / 9:16";
-                document.getElementById('card-desc').innerText = data.desc10;
-                videoEl.src = data.video10;
-            } else {
-                document.getElementById('card-badge').innerText = "30s / 9:16";
-                document.getElementById('card-desc').innerText = data.desc30;
-                videoEl.src = data.video30;
-            }
-            videoEl.play();
+            let targetUrl = currentSpec === '10s' ? data.video10 : data.video30;
+            document.getElementById('card-badge').innerText = currentSpec === '10s' ? "10s / 9:16" : "30s / 9:16";
+            document.getElementById('card-desc').innerText = currentSpec === '10s' ? data.desc10 : data.desc30;
+            
+            sourceEl.src = targetUrl;
+            videoEl.load();
+            videoEl.play().catch(e => console.log("Auto-play prevented:", e));
         }
     </script>
 </body>
