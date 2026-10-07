@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bespoke Video Showcases for Etsy & Artisan Brands</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+        @keyframes scanline {
+            0% { top: 0%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .animate-scan { animation: scanline 3.5s infinite linear; }
+    </style>
+</head>
+<body class="bg-[#F9F6F0] text-[#2C302E] antialiased min-h-screen flex flex-col justify-between">
+    <header class="border-b border-[#E8E2D5] py-5 px-8 md:px-16 flex items-center justify-between">
+        <div class="text-xs uppercase tracking-[0.25em] font-semibold text-[#84937D]">AI Business Sandbox</div>
+        <div class="text-xs text-stone-500 font-light hidden sm:block">Crafted for Etsy Star Sellers</div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 flex-grow grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="lg:col-span-7 space-y-8">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAE3D2] text-[#5A6359] text-xs font-medium tracking-wide">
+                <span>✦</span> Exclusive for Handcrafted & Fine Goods
+            </div>
+            <h1 class="text-5xl md:text-7xl font-medium tracking-tight leading-[1.08]">
+                Turn static listing photos into <span class="italic text-[#A8644C]">cinematic motion.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl">
+                Stop losing marketplace traffic to moving video feeds. We transform your product photography into high-converting vertical video showcases formatted for Etsy, Instagram Reels, and TikTok.
+            </p>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-[#E8E2D5] max-w-xl space-y-6">
+                <div>
+                    <h2 class="text-2xl font-semibold">Claim Your Free Sample Video</h2>
+                    <p class="text-sm text-stone-500 mt-1">Paste one listing URL below. We will render a 10s video within 24 hours.</p>
+                </div>
+                <form class="space-y-4" onsubmit="event.preventDefault(); alert('Success! Your sample request has been queued in the sandbox pipeline.');">
+                    <input type="url" placeholder="https://www.etsy.com/listing/..." required class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#A8644C] text-sm">
+                    <input type="email" placeholder="Your email address" required class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#A8644C] text-sm">
+                    <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-[#A8644C] hover:bg-[#93553F] text-white font-medium text-sm tracking-wide transition shadow-sm">
+                        Bring My Product to Life →
+                    </button>
+                </form>
+                <div class="flex items-center justify-between text-xs text-stone-400 pt-2 border-t border-stone-100">
+                    <span>✓ 100% Etsy-Compliant Specs</span>
+                    <span>✓ No Credit Card Needed</span>
+                    <span>✓ 24-Hour Turnaround</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-5 flex flex-col items-center">
+            <div class="flex gap-2 mb-4 bg-[#EAE3D2] p-1.5 rounded-full">
+                <button onclick="switchCategory('ceramics')" id="btn-ceramics" class="px-4 py-1.5 rounded-full text-xs font-medium transition bg-[#A8644C] text-white">Ceramics</button>
+                <button onclick="switchCategory('leather')" id="btn-leather" class="px-4 py-1.5 rounded-full text-xs font-medium transition text-stone-700 hover:text-stone-900">Leather</button>
+                <button onclick="switchCategory('candle')" id="btn-candle" class="px-4 py-1.5 rounded-full text-xs font-medium transition text-stone-700 hover:text-stone-900">Candles</button>
+                <button onclick="switchCategory('jewelry')" id="btn-jewelry" class="px-4 py-1.5 rounded-full text-xs font-medium transition text-stone-700 hover:text-stone-900">Jewelry</button>
+            </div>
+
+            <div class="flex gap-2 mb-6">
+                <button onclick="switchSpec('10s')" id="spec-10s" class="px-3.5 py-1 text-xs font-medium rounded-md border border-[#C5BCAB] bg-white text-stone-900 shadow-sm">10s Etsy Loop Spec</button>
+                <button onclick="switchSpec('30s')" id="spec-30s" class="px-3.5 py-1 text-xs font-medium rounded-md border border-transparent text-stone-600 hover:text-stone-900">30s Social Commercial Spec</button>
+            </div>
+
+            <div class="relative w-[300px] h-[540px] bg-stone-900 rounded-[36px] p-3 shadow-2xl border-4 border-stone-800 overflow-hidden">
+                <div class="absolute top-5 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-white tracking-widest uppercase z-20 border border-white/10">
+                    FLOW.GOOGLE RENDER
+                </div>
+                <video id="showcase-video" autoplay loop muted playsinline class="w-full h-full object-cover rounded-[24px]">
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+                <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-3.5 rounded-2xl shadow-lg border border-white/20 z-20">
+                    <div class="flex items-center justify-between">
+                        <h3 id="card-title" class="font-semibold text-sm text-stone-900">Speckled Artisan Mug</h3>
+                        <span id="card-badge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">10s / 9:16</span>
+                    </div>
+                    <p id="card-desc" class="text-[11px] text-stone-600 mt-1 line-clamp-2">Seamless 10s rotational loop optimized for Etsy listing requirements.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const profiles = {
+            ceramics: {
+                title: "Speckled Artisan Mug",
+                desc10: "Seamless 10s rotational loop optimized for Etsy listing requirements.",
+                desc30: "30s Stitched Social Master: 3-shot commercial sequence (Hook -> Spatial Orbit -> Studio Lifestyle Reveal).",
+                video10: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                video30: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+            },
+            leather: {
+                title: "Handcrafted Leather Tote",
+                desc10: "10s macro detail pan highlighting edge-painting and full-grain texture.",
+                desc30: "30s Social Master: Heritage craftsmanship storytelling with unboxing aesthetic.",
+                video10: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+                video30: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            },
+            candle: {
+                title: "Botanical Soy Candle",
+                desc10: "10s ambient warm glow loop designed to increase conversion rates.",
+                desc30: "30s Commercial Master: Sensory lifestyle immersion featuring crackling wick audio.",
+                video10: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+                video30: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4"
+            },
+            jewelry: {
+                title: "Hammered Gold Ring",
+                desc10: "10s sparkle macro rotation for marketplace listing loops.",
+                desc30: "30s Social Master: Cinematic close-up brilliance framing luxury gift unboxing.",
+                video10: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+                video30: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+            }
+        };
+
+        let currentCat = 'ceramics';
+        let currentSpec = '10s';
+
+        function switchCategory(cat) {
+            currentCat = cat;
+            ['ceramics', 'leather', 'candle', 'jewelry'].forEach(c => {
+                const btn = document.getElementById(`btn-${c}`);
+                if (c === cat) {
+                    btn.className = "px-4 py-1.5 rounded-full text-xs font-medium transition bg-[#A8644C] text-white";
+                } else {
+                    btn.className = "px-4 py-1.5 rounded-full text-xs font-medium transition text-stone-700 hover:text-stone-900";
+                }
+            });
+            updatePlayer();
+        }
+
+        function switchSpec(spec) {
+            currentSpec = spec;
+            const btn10 = document.getElementById('spec-10s');
+            const btn30 = document.getElementById('spec-30s');
+            if (spec === '10s') {
+                btn10.className = "px-3.5 py-1 text-xs font-medium rounded-md border border-[#C5BCAB] bg-white text-stone-900 shadow-sm";
+                btn30.className = "px-3.5 py-1 text-xs font-medium rounded-md border border-transparent text-stone-600 hover:text-stone-900";
+            } else {
+                btn30.className = "px-3.5 py-1 text-xs font-medium rounded-md border border-[#C5BCAB] bg-white text-stone-900 shadow-sm";
+                btn10.className = "px-3.5 py-1 text-xs font-medium rounded-md border border-transparent text-stone-600 hover:text-stone-900";
+            }
+            updatePlayer();
+        }
+
+        function updatePlayer() {
+            const data = profiles[currentCat];
+            const videoEl = document.getElementById('showcase-video');
+            document.getElementById('card-title').innerText = data.title;
+            
+            if (currentSpec === '10s') {
+                document.getElementById('card-badge').innerText = "10s / 9:16";
+                document.getElementById('card-desc').innerText = data.desc10;
+                videoEl.src = data.video10;
+            } else {
+                document.getElementById('card-badge').innerText = "30s / 9:16";
+                document.getElementById('card-desc').innerText = data.desc30;
+                videoEl.src = data.video30;
+            }
+            videoEl.play();
+        }
+    </script>
+</body>
+</html>
