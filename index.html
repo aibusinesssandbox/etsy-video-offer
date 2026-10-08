@@ -12,7 +12,15 @@
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
     </style>
-</head>
+
+    <style>
+      @media (max-width: 768px) {
+        body { padding: 12px; }
+        .container, main, section { flex-direction: column !important; width: 100% !important; box-sizing: border-box; }
+        .phone-frame, .preview-container { width: 100% !important; max-width: 100% !important; margin-top: 24px; }
+      }
+    </style>
+    </head>
 <body class="bg-[#F9F6F0] text-[#2C302E] antialiased min-h-screen flex flex-col justify-between">
     <header class="border-b border-[#E8E2D5] py-5 px-8 md:px-16 flex items-center justify-between">
         <div class="text-xs uppercase tracking-[0.25em] font-semibold text-[#84937D]">AI Business Sandbox</div>
@@ -72,7 +80,7 @@
                     FLOW.GOOGLE OMNI RENDER
                 </div>
                 
-                <video id="showcase-video" autoplay loop muted playsinline webkit-playsinline class="w-full h-full object-cover rounded-[24px]">
+                <video id="showcase-video" autoplay loop muted playsinline webkit-playsinline class="w-full h-full object-cover rounded-[24px]" playsinline webkit-playsinline muted autoplay loop>
                     <source id="video-source" src="./assets/videos/ceramics_10s.mp4" type="video/mp4">
                     Your browser does not support video playback.
                 </video>
