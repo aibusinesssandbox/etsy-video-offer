@@ -42,7 +42,7 @@
             <div class="bg-white p-8 rounded-2xl shadow-sm border border-[#E8E2D5] max-w-xl space-y-6">
                 <div>
                     <h2 class="text-2xl font-semibold">Claim Your Free Sample Video</h2>
-                    <p class="text-sm text-stone-500 mt-1">Paste one listing URL below. We will render a 10s video within 24 hours.</p>
+                    
                 </div>
                 <form class="space-y-4" onsubmit="event.preventDefault(); alert('Success! Your sample request has been queued in the sandbox pipeline.');">
                     <input type="url" placeholder="https://www.etsy.com/listing/..." required class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#A8644C] text-sm">
@@ -76,9 +76,7 @@
 
             <!-- Mobile Phone Mockup Player Container -->
             <div class="relative w-[300px] h-[540px] bg-stone-900 rounded-[36px] p-3 shadow-2xl border-4 border-stone-800 overflow-hidden">
-                <div class="absolute top-5 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-white tracking-widest uppercase z-20 border border-white/10">
-                    FLOW.GOOGLE OMNI RENDER
-                </div>
+                
                 
                 <video id="showcase-video" autoplay loop muted playsinline webkit-playsinline class="w-full h-full object-cover rounded-[24px]" playsinline webkit-playsinline muted autoplay loop>
                     <source id="video-source" src="./assets/videos/ceramics_10s.mp4" type="video/mp4">
@@ -96,90 +94,6 @@
         </div>
     </main>
 
-    <script>
-        const profiles = {
-            ceramics: {
-                title: "Speckled Artisan Pour-Over Mug",
-                desc10: "[0.0s-3.0s] Extreme macro close-up on speckled ceramic glaze and rim texture. [3.0s-7.0s] Smooth 180-degree camera orbit around the mug. [7.0s-10.0s] Backward dolly camera movement revealing warm studio background bokeh.",
-                desc30: "30s Commercial Master: Full studio pour-over workflow, steam dynamics, and macro glaze lighting sweep.",
-                video10: "./assets/videos/ceramics_10s.mp4",
-                video30: "./assets/videos/ceramics_30s.mp4"
-            },
-            leather: {
-                title: "Full-Grain Saddle Tan Leather Satchel",
-                desc10: "[0.0s-3.0s] Close-up panning shot highlighting hand-stitched wax thread and antique brass buckle. [3.0s-10.0s] Cinematic vertical tilt up revealing the full leather bag structure.",
-                desc30: "30s Commercial Master: Unboxing sequence, interior pocket showcase, and premium leather grain lighting glide.",
-                video10: "./assets/videos/leather_10s.mp4",
-                video30: "./assets/videos/leather_30s.mp4"
-            },
-            candle: {
-                title: "Botanical Amber Jar Soy Candle",
-                desc10: "[0.0s-4.0s] Slow downward vertical camera glide focusing on the amber glass rim. [4.0s-10.0s] Subtle directional warmth sweep accentuating the natural soy wax surface.",
-                desc30: "30s Commercial Master: Wick ignition motion, crackling warmth ambiance, and botanical surround pan.",
-                video10: "./assets/videos/candle_10s.mp4",
-                video30: "./assets/videos/candle_30s.mp4"
-            },
-            jewelry: {
-                title: "Raw Moss Agate Gold Solitaire Ring",
-                desc10: "[0.0s-3.0s] Razor-sharp focus lock on the natural green inclusions of the stone. [3.0s-10.0s] Micro lighting sweep across the gold band creating a premium jewel glint.",
-                desc30: "30s Commercial Master: 360-degree micro-jewelry turnaround, luxury velvet box opening, and prism light glint.",
-                video10: "./assets/videos/jewelry_10s.mp4",
-                video30: "./assets/videos/jewelry_30s.mp4"
-            }
-        };
-
-        let currentCat = 'ceramics';
-        let currentSpec = '10s';
-
-        function switchCategory(cat) {
-            currentCat = cat;
-            ['ceramics', 'leather', 'candle', 'jewelry'].forEach(c => {
-                const btn = document.getElementById(`btn-${c}`);
-                if (c === cat) {
-                    btn.className = "px-4 py-1.5 rounded-full text-xs font-medium transition bg-[#A8644C] text-white";
-                } else {
-                    btn.className = "px-4 py-1.5 rounded-full text-xs font-medium transition text-stone-700 hover:text-stone-900";
-                }
-            });
-            updatePlayer();
-        }
-
-        function switchSpec(spec) {
-            currentSpec = spec;
-            const btn10 = document.getElementById('spec-10s');
-            const btn30 = document.getElementById('spec-30s');
-            if (spec === '10s') {
-                btn10.className = "px-3.5 py-1 text-xs font-medium rounded-md border border-[#C5BCAB] bg-white text-stone-900 shadow-sm";
-                btn30.className = "px-3.5 py-1 text-xs font-medium rounded-md border border-transparent text-stone-600 hover:text-stone-900";
-            } else {
-                btn30.className = "px-3.5 py-1 text-xs font-medium rounded-md border border-[#C5BCAB] bg-white text-stone-900 shadow-sm";
-                btn10.className = "px-3.5 py-1 text-xs font-medium rounded-md border border-transparent text-stone-600 hover:text-stone-900";
-            }
-            updatePlayer();
-        }
-
-        function updatePlayer() {
-            const data = profiles[currentCat];
-            const videoEl = document.getElementById('showcase-video');
-            const sourceEl = document.getElementById('video-source');
-            
-            document.getElementById('card-title').innerText = data.title;
-            document.getElementById('card-badge').innerText = currentSpec === '10s' ? "10s / 9:16" : "30s / 9:16";
-            document.getElementById('card-desc').innerText = currentSpec === '10s' ? data.desc10 : data.desc30;
-
-            const targetUrl = currentSpec === '10s' ? data.video10 : data.video30;
-            
-            sourceEl.src = targetUrl;
-            videoEl.load();
-            const playPromise = videoEl.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => console.log("Autoplay handled:", error));
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            updatePlayer();
-        });
-    </script>
+    
 </body>
 </html>
